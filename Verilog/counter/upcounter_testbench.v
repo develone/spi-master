@@ -4,7 +4,7 @@
 // Testbench Verilog code for up counter
 module upcounter_testbench();
 reg clk, reset;
-wire [3:0] counter;
+wire [7:0] counter;
 
 up_counter dut(clk, reset, counter);
 initial begin 
@@ -16,4 +16,18 @@ reset=1;
 #20;
 reset=0;
 end
-endmodule
+
+initial
+begin
+#6920000
+$finish();
+end
+
+ initial 
+    begin
+      // Required to dump signals to EPWave
+      $dumpfile("dump.vcd");
+      $dumpvars(0);
+    end
+
+endmodule 
